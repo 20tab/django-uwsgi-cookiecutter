@@ -1,0 +1,22 @@
+image: python:3.7
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - pip
+        services:
+          - postgres
+        script:
+          - pip install tox
+          - export DATABASE_URL=postgres://postgres:postgres@localhost:5432/{{cookiecutter.project_slug}}
+          - export DJANGO_SECRET_KEY=dj4ng0s3cr3tk3y
+          - tox -e coverage,reportxml
+
+definitions:
+  services:
+    postgres:
+      image: postgres:12
+      variables:
+        POSTGRES_DB: '{{cookiecutter.project_slug}}'
+        POSTGRES_PASSWORD: 'postgres'

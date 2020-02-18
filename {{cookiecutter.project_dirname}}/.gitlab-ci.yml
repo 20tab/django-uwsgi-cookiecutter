@@ -1,0 +1,32 @@
+stages:
+- test
+- coverage
+
+test:
+  stage: test
+  image: python:3.7
+  services:
+    - postgres:12
+  before_script:
+    - pip install tox
+  variables:
+    DATABASE_URL: "postgres://postgres:postgres@postgres:5432/{{cookiecutter.project_slug}}"
+    DJANGO_SECRET_KEY: "dj4ng0s3cr3tk3y"
+  script:
+    - tox -e coverage,report,reporthtml
+  coverage: '/^TOTAL.*\s+(\d+\%)$/'
+  artifacts:
+    paths:
+      - htmlcov
+    expire_in: 1 day
+
+pages:
+  stage: coverage
+  image: alpine
+  script:
+    - mv htmlcov public
+  artifacts:
+    paths:
+      - public
+  dependencies:
+    - test
