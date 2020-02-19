@@ -15,6 +15,7 @@ pyproject.toml
 README.md
 requirements/*.ini
 setup.cfg
+scripts
 tasks.py
 uwsgiconf/local/*
 uwsgiconf/remote/*
