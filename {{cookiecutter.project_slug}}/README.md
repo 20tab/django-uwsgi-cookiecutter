@@ -4,41 +4,43 @@
 
 A [Django](https://docs.djangoproject.com) project using [uWSGI](https://uwsgi-docs.readthedocs.io) as application server.
 
-## Documentation
+## Documentation <!-- omit in toc -->
 
-* [Conventions](#conventions)
-* [Workspace initialization](#workspace-initialization)
-    * [Virtual environment](#virtual-environment)
-    * [Basic requirements](#basic-requirements)
-* [Clone and start the existing project](#clone-and-start-the-existing-project)
-    * [Clone Project](#clone-project)
-    * [Initialization](#initialization)
-* [Usage](#usage)
-    * [Database reset](#database-reset)
-    * [Superuser creation](#superuser-creation)
-    * [Add or Update libraries](#add-or-update-libraries)
-        * [List outdated libraries](#list-outdated-libraries)
-        * [Edit and Compile requirements files](#edit-and-compile-requirements-files)
-    * [Install libraries for development](#install-libraries-for-development)
-* [Testing](#testing)
-* [Static](#static)
-* [Continuous Integration](#continuous-integration)
-    * [Jenkins](#jenkins)
-    * [Gitlab CI](#gitlab-ci)
-    * [Bitbucket pipelines](#bitbucket-pipelines)
-* [Git pre-commit hooks](#git-pre-commit-hooks)
-* [Database](#database)
-    * [Create](#create)
-    * [Drop](#drop)
-    * [Dump](#dump)
-* [Deploy](#deploy)
-    * [Initialize](#initialize)
-    * [Deploy](#deploy)
-    * [Restore](#restore)
+- [{{cookiecutter.project_name}}](#cookiecutterproject_name)
+  - [Conventions](#conventions)
+  - [Workspace initialization](#workspace-initialization)
+    - [Virtual environment](#virtual-environment)
+    - [Basic requirements](#basic-requirements)
+    - [Git initialization](#git-initialization)
+    - [Clone the existing project](#clone-the-existing-project)
+    - [Initialization](#initialization)
+  - [Usage](#usage)
+    - [Database reset](#database-reset)
+    - [Superuser creation](#superuser-creation)
+    - [Add or Update libraries](#add-or-update-libraries)
+      - [List outdated libraries](#list-outdated-libraries)
+      - [Edit and Compile requirements files](#edit-and-compile-requirements-files)
+    - [Install libraries for development](#install-libraries-for-development)
+  - [Testing](#testing)
+  - [Static](#static)
+  - [Continuous Integration](#continuous-integration)
+    - [Jenkins](#jenkins)
+    - [Gitlab CI](#gitlab-ci)
+    - [Bitbucket pipelines](#bitbucket-pipelines)
+  - [Git pre-commit hooks](#git-pre-commit-hooks)
+  - [Database](#database)
+    - [Create](#create)
+    - [Drop](#drop)
+    - [Dump](#dump)
+  - [Deploy](#deploy)
+    - [Initialize](#initialize)
+    - [Deploy](#deploy-1)
+    - [Restore](#restore)
 
 ## Conventions
 
 - replace `projects` with your actual projects directory
+- replace `git_repository_url` with your actual git repository url
 
 ## Workspace initialization
 
@@ -51,34 +53,34 @@ To install and use virtualenv, please, visit [the official documentation](https:
 
 ### Basic requirements
 
-**Django** and **Invoke** must be installed before initializing the project.
+**Invoke** must be installed before initializing the project.
 
 ```shell
-({{cookiecutter.project_slug}}) $ pip install -U django invoke python-dotenv dj-database-url
+({{cookiecutter.project_slug}}) $ pip install -U invoke
 ```
 
-## Clone and start the existing project
+### Git initialization
 
-This section explains the steps when you need to clone an existing project.
+In order to initialize git and sync the project with an existing repository:
 
-### Clone Project
+```shell
+({{cookiecutter.project_slug}}) $ cd ~/projects/{{cookiecutter.project_slug}}
+({{cookiecutter.project_slug}}) $ inv gitinit git_repository_url
+```
 
-Change directory and clone the project repository:
+### Clone the existing project
+
+Change directory, clone the project repository and enter the newly created **{{cookiecutter.project_slug}}** directory:
 
 ```shell
 ({{cookiecutter.project_slug}}) $ cd ~/projects/
 ({{cookiecutter.project_slug}}) $ git clone GIT_REPOSITORY_URL {{cookiecutter.project_slug}}
+({{cookiecutter.project_slug}}) $ cd {{cookiecutter.project_slug}}
 ```
 
-> **NOTE** : If you're cloning an existing project, make sure you go to the correct branch (e.g. `git checkout develop`)
+**NOTE** : Make sure you switch to the correct branch (e.g. `git checkout develop`)
 
 ### Initialization
-
-Enter the newly created **project** directory:
-
-```shell
-({{cookiecutter.project_slug}}) $ cd ~/projects/{{cookiecutter.project_slug}}
-```
 
 Invoke init and follow instructions, to configure the project:
 
@@ -95,7 +97,6 @@ To reset database execute (beware all data will be lost):
 ```shell
 ({{cookiecutter.project_slug}}) $ inv dropdb
 ({{cookiecutter.project_slug}}) $ inv createdb
-({{cookiecutter.project_slug}}) $ python manage.py migrate
 ```
 
 ### Superuser creation
@@ -147,8 +148,6 @@ To run the full test suite, with coverage calculation, execute:
 ```shell
 ({{cookiecutter.project_slug}}) $ make test
 ```
-
-> **NOTE**:  check [django-bdd-toolkit](https://github.com/20tab/django-bdd-toolkit) for instructions on how to write BDD tests
 
 ## Static
 
