@@ -1,3 +1,5 @@
+# START https://github.com/github/gitignore/blob/master/Python.gitignore
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,3 +129,28 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# END https://github.com/github/gitignore/blob/master/Python.gitignore
+
+# JetBrains
+.idea/
+
+# Eclipse / Kate
+*.swp
+
+# SublimeText
+*.sublime-project
+*.sublime-workspace
+
+# Vim
+[._]*.un~
+
+# VisualStudioCode
+.devcontainer/
+.vscode/
+
+# macOS
+.DS_Store
+
+# Requirements
+requirements.txt
