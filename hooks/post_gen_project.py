@@ -3,8 +3,9 @@
 import subprocess
 
 
-def create_apps():
+def init():
+    """Execute intialization script."""
     subprocess.run("./scripts/init.sh")
 
 
-create_apps()
+init()

@@ -139,7 +139,9 @@ class ProjectDefault(Configuration):
         (("{{cookiecutter.project_slug}}", "errors@{{cookiecutter.project_slug}}.com"),)
     )
 
-    DEFAULT_FROM_EMAIL = "{{cookiecutter.project_slug}} <info@{{cookiecutter.project_slug}}.com>"
+    DEFAULT_FROM_EMAIL = (
+        "{{cookiecutter.project_slug}} <info@{{cookiecutter.project_slug}}.com>"
+    )
 
     EMAIL_SUBJECT_PREFIX = "[{{cookiecutter.project_slug}}] "
 
