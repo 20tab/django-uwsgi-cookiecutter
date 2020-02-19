@@ -14,15 +14,13 @@ A [Django](https://docs.djangoproject.com) project cookiecutter using [uWSGI](ht
     - [Basic requirements](#basic-requirements)
   - [Setup a new project](#setup-a-new-project)
     - [Start Project](#start-project)
-    - [Git initialization](#git-initialization)
 
 ## Conventions
 
 In the following instructions:
 
 - replace `projects` with your actual projects directory
-- replace `project_name` with your chosen project name
-- replace `git_repository_url` with your actual git repository url
+- replace `My project name` with your chosen project name
 
 ## Workspace initialization
 
@@ -45,16 +43,7 @@ Change directory and start a new project with this template:
 ```shell
 $ cd ~/projects/
 $ cookiecutter https://github.com/20tab/django-uwsgi-cookiecutter
-project_name [django uwsgi cookiecutter]: project_name
-project_slug [project_name]:
-$ cd project_slug
-```
-
-### Git initialization
-
-In order to initialize git and sync the project with an existing repository:
-
-```shell
-$ cd ~/projects/project_slug
-$ inv gitinit GIT_REPOSITORY_URL
+project_name: My project name
+project_slug [myprojectname]:
+$ cd myprojectname
 ```
