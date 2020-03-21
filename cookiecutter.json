@@ -1,4 +1,5 @@
 {
     "project_name": null,
-    "project_slug": "{{ cookiecutter.project_name.casefold().replace(' ', '').replace('-', '') }}"
+    "project_slug": "{{ cookiecutter.project_name.casefold().replace(' ', '').replace('-', '') }}",
+    "domain_url": "{{ cookiecutter.project_slug }}.com"
 }
