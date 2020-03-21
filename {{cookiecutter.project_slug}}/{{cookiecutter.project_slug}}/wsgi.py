@@ -1,5 +1,5 @@
 """
-WSGI config for {{cookiecutter.project_slug}} project.
+WSGI config for {{cookiecutter.project_name}} project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -9,9 +9,9 @@ https://docs.djangoproject.com/en/stable/howto/deployment/wsgi/
 
 import os
 
-os.environ.setdefault(
-    "DJANGO_SETTINGS_MODULE", "{{cookiecutter.project_slug}}.settings"
-)
+# fmt: off
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "{{cookiecutter.project_slug}}.settings")  # noqa
+# fmt: on
 os.environ.setdefault("DJANGO_CONFIGURATION", "Local")
 
 from configurations.wsgi import get_wsgi_application  # noqa isort:skip

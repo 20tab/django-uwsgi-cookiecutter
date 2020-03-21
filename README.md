@@ -34,5 +34,6 @@ $ cd ~/projects/
 $ cookiecutter https://github.com/20tab/django-uwsgi-cookiecutter
 project_name: My project name
 project_slug [myprojectname]:
+domain_url [myprojectname.com]:
 $ cd myprojectname
 ```
